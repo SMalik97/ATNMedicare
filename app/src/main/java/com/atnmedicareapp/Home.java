@@ -138,6 +138,12 @@ public class Home extends AppCompatActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view,String url){
                 if (url.startsWith("tel:")){
+                    Intent intent=new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+                if (url.startsWith("whatsapp:")){
                     Intent intent=new Intent(Intent.ACTION_DIAL,Uri.parse(url));
                     startActivity(intent);
                     return true;
